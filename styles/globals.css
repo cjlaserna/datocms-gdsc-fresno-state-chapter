@@ -3,7 +3,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {
@@ -13,4 +13,47 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.section {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  position: relative;
+}
+
+.hero {
+  height: 100vh;
+  max-height: -webkit-fill-available;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.hero .container {
+  padding-top: 60px;
+}
+
+.header {
+  padding: 0 15px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background: white;
+}
+.header .nav-link {
+  margin-left: 30px;
+}
+
+.header .navbar {
+  padding: 10px 0;
+  line-height: 30px;
+  height: 60px;
+  width: 100%;
+  background: #fff;
+}
+
+.footer {
+  padding-bottom: 5px;
 }
