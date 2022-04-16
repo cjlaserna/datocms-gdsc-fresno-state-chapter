@@ -19,9 +19,9 @@ export default function Hero() {
                 dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam, nisi ut
                 aliquid ex ea commodi consequatur.
               </p>
-              <Link href="/">
+              <Link href="#services">
                 <a className="btn btn-warning">
-                  Find Out More <span className="ml-2 right-icon">&#8594;</span>
+                  Find Out More <span className="ml-2">&darr;</span>
                 </a>
               </Link>
             </div>

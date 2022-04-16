@@ -27,7 +27,7 @@ export default function Service({ service }) {
               <p className="text-muted mb-3 f-15">{service.description}</p>
               <Link href={service.url}>
                 <a className="f-16 text-warning">
-                  Learn More <span className="right-icon ml-2">&#8594;</span>
+                  Try It Now <span className="right-icon ml-2">&#8594;</span>
                 </a>
               </Link>
             </div>
@@ -41,7 +41,7 @@ export default function Service({ service }) {
               <p className="text-muted mb-3 f-15">{service.description}</p>
               <Link href={service.url}>
                 <a className="f-16 text-warning">
-                  Learn More <span className="right-icon ml-2">&#8594;</span>
+                  Try It Now <span className="right-icon ml-2">&#8594;</span>
                 </a>
               </Link>
             </div>
