@@ -6,13 +6,13 @@ export default function Header() {
     <div className={"header"}>
       <Navbar bf={"light"} expand="md">
         <Container>
-          <Navbar.Brand href="/#">Your Logo</Navbar.Brand>
+          <Navbar.Brand href="#">Your Logo</Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse>
             <Nav className="m-auto">
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/#services">Services</Nav.Link>
-              <Nav.Link href="/#about">About</Nav.Link>
+              <Nav.Link href="#">Home</Nav.Link>
+              <Nav.Link href="#services">Services</Nav.Link>
+              <Nav.Link href="#about">About</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
