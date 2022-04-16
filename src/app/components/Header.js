@@ -3,10 +3,10 @@ import { Container, Navbar, Nav } from "react-bootstrap"
 
 export default function Header() {
   return (
-    <div className={`header`}>
+    <div className={"header"}>
       <Navbar bf={"light"} expand="md">
         <Container>
-          <Navbar.Brand href="/">Your Logo</Navbar.Brand>
+          <Navbar.Brand href="/#">Your Logo</Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse>
             <Nav className="m-auto">
