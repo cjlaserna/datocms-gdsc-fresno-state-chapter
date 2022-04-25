@@ -20,7 +20,8 @@ export default function LandingPage({ services, footerLinks }) {
 }
 
 export function getStaticProps() {
-  // retrieving the service list ...
+  // in a real-world scenario retrieve the service list
+  // by calling an API or performing a query
   const services = serviceSource
 
   // retrieving the footer link list ...
