@@ -9,12 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "^12.1.5",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
     "bootstrap": "^5.1.3",
+    "next": "^12.1.5",
+    "prettier": "2.6.2",
+    "react": "^18.0.0",
     "react-bootstrap": "^2.2.3",
-    "prettier": "2.6.2"
+    "react-datocms": "^3.0.12",
+    "react-dom": "^18.0.0",
+    "tiny-json-http": "^7.4.2"
   },
   "devDependencies": {
     "eslint": "8.13.0",

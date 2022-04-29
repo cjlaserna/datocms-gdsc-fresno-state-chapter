@@ -4,21 +4,15 @@ import hero from "../assets/images/hero.png"
 import Link from "next/link"
 import Image from "next/image"
 
-export default function Hero() {
+export default function Hero({ record: { heroTitle, heroSubtitle } }) {
   return (
     <section className="section position-relative bg-light hero">
       <Container>
         <Row className="align-items-center">
           <Col lg={6}>
             <div className="pr-lg-5">
-              <h1 className="mb-4 font-weight-normal line-height-1_4">
-                Your Fantastic <span className="text-warning font-weight-medium">Landing Page</span>
-              </h1>
-              <p className="text-muted mb-4 pb-2">
-                Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam, nisi ut
-                aliquid ex ea commodi consequatur.
-              </p>
+              <h1 className="mb-4 font-weight-normal line-height-1_4">{heroTitle}</h1>
+              <p className="text-muted mb-4 pb-2">{heroSubtitle}</p>
               <Link href="#services">
                 <a className="btn btn-warning">
                   Find Out More <span className="ml-2">&darr;</span>
