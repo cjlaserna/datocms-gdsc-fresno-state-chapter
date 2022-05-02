@@ -34,6 +34,11 @@ export async function getStaticProps({ params, preview = false }) {
           }
           heroTitle
           heroSubtitle
+          heroImage {
+            responsiveImage(imgixParams: {fm: jpg, fit: crop }) {
+              ...responsiveImageFragment
+            }
+          }
           slug
           content {
             value
@@ -50,7 +55,7 @@ export async function getStaticProps({ params, preview = false }) {
                     ctaLink
                     text
                     image {
-                      responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 100, h: 100, sat: -100}) {
+                      responsiveImage(imgixParams: {fm: jpg, fit: crop}) {
                         ...responsiveImageFragment
                       }
                     }
@@ -72,14 +77,6 @@ export async function getStaticProps({ params, preview = false }) {
                   }
                 }
               }
-            }
-          }
-          ogImage: heroImage{
-            url(imgixParams: {fm: jpg, fit: crop, w: 2000, h: 1000 })
-          }
-          heroImage {
-            responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 2000, h: 1000 }) {
-              ...responsiveImageFragment
             }
           }
         }

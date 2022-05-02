@@ -2,9 +2,9 @@ import React from "react"
 import { Container, Row, Col } from "react-bootstrap"
 import hero from "../assets/images/hero.png"
 import Link from "next/link"
-import Image from "next/image"
+import { Image } from "react-datocms"
 
-export default function Hero({ record: { heroTitle, heroSubtitle } }) {
+export default function Hero({ record: { heroTitle, heroSubtitle, heroImage } }) {
   return (
     <section className="section position-relative bg-light hero">
       <Container>
@@ -22,14 +22,7 @@ export default function Hero({ record: { heroTitle, heroSubtitle } }) {
           </Col>
           <Col lg={6}>
             <div className="mt-5 mt-lg-0">
-              <Image
-                layout={"responsive"}
-                src={hero.src}
-                width={1000}
-                height={710}
-                alt=""
-                className="img-fluid mx-auto d-block"
-              />
+              <Image data={heroImage.responsiveImage} className="img-fluid d-block mx-auto" />
             </div>
           </Col>
         </Row>

@@ -1,5 +1,5 @@
 import React from "react"
-import { Container, Row, Col } from "react-bootstrap"
+import { Col } from "react-bootstrap"
 
 export default function About({ record }) {
   return (

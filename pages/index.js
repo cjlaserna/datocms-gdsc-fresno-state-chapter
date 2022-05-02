@@ -12,11 +12,6 @@ export async function getStaticProps({ params, preview = false }) {
         landings: allLandingPages {
           heroTitle
           slug
-          heroImage {
-            responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 2000, h: 1000 }) {
-              ...responsiveImageFragment
-            }
-          }
         }
       }
       ${responsiveImageFragment}

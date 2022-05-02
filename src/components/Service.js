@@ -1,7 +1,6 @@
 import React from "react"
 import { Row, Col } from "react-bootstrap"
-import serviceImg from "../assets/images/service.png"
-import Image from "next/image"
+import { Image } from "react-datocms"
 import Link from "next/link"
 
 export default function Service({ service }) {
@@ -10,16 +9,7 @@ export default function Service({ service }) {
       {service.id % 2 !== 0 ? (
         <Row className={service.id === 1 ? "align-items-center" : "align-items-center mt-5"} key={service.id}>
           <Col md={5}>
-            <div>
-              <Image
-                layout={"responsive"}
-                src={service.img || serviceImg.src}
-                width={1000}
-                height={667}
-                alt=""
-                className="img-fluid d-block mx-auto"
-              />
-            </div>
+            <Image data={service.image.responsiveImage} className="img-fluid d-block mx-auto" />
           </Col>
           <Col md={{ size: 6, offset: 1 }}>
             <div className="mt-5 mt-sm-0 mb-4">
@@ -47,16 +37,7 @@ export default function Service({ service }) {
             </div>
           </Col>
           <Col md={{ size: 5, offset: 1 }} className="mt-5 mt-sm-0">
-            <div>
-              <Image
-                layout={"responsive"}
-                src={service.img || serviceImg.src}
-                width={1000}
-                height={667}
-                alt=""
-                className="img-fluid d-block mx-auto"
-              />
-            </div>
+            <Image data={service.image.responsiveImage} className="img-fluid d-block mx-auto" />
           </Col>
         </Row>
       )}
