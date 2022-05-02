@@ -3,7 +3,7 @@ import Hero from "../../src/components/Hero"
 import Service from "../../src/components/Service"
 import About from "../../src/components/About"
 import Head from "next/head"
-import { isHeading } from "datocms-structured-text-utils"
+import { isHeading, isParagraph } from "datocms-structured-text-utils"
 import { metaTagsFragment, responsiveImageFragment } from "../../lib/fragments"
 import { render as toPlainText } from "datocms-structured-text-to-plain-text"
 import { request } from "../../lib/datocms"
@@ -64,6 +64,8 @@ export async function getStaticProps({ params, preview = false }) {
               }
               ... on SectionRecord {
                 id
+                title
+                text
                 content {
                   ...on AboutBlockRecord {
                     __typename
@@ -113,6 +115,7 @@ export default function LandingPage({ subscription }) {
   } = useQuerySubscription(subscription)
 
   const metaTags = landingPage.seo.concat(site.favicon)
+
   return (
     <Layout pageTitle="Landing Page Template in Next.js">
       <Head>{renderMetaTags(metaTags)}</Head>
@@ -129,7 +132,6 @@ export default function LandingPage({ subscription }) {
                       return <Service service={link} />
                     }
                   })
-                  return null
                 case "SectionRecord":
                   const blocks = record.content.map((rec) => {
                     if (rec.__typename === "AboutBlockRecord") {
@@ -144,9 +146,19 @@ export default function LandingPage({ subscription }) {
                   })
 
                   return (
-                    <Row className="justify-content-center mt-5" key={record.id}>
-                      {blocks}
-                    </Row>
+                    <section className="section bg-light">
+                      <Container>
+                        <div className="title text-center mb-5">
+                          <h3 className="font-weight-normal text-dark">{record.title}</h3>
+                          <p className="text-muted">{record.subtitle}</p>
+                          {blocks.length > 0 && (
+                            <Row className="justify-content-center mt-5" key={record.id}>
+                              {blocks}
+                            </Row>
+                          )}
+                        </div>
+                      </Container>
+                    </section>
                   )
                 default:
                   return null
@@ -161,7 +173,7 @@ export default function LandingPage({ subscription }) {
                   .replace(/[^\w-]+/g, "")
 
                 return (
-                  <HeadingTag key={key} id={anchor}>
+                  <HeadingTag key={key} id={anchor} className="font-weight-normal text-warning mb-3">
                     <a href={`#${anchor}`}>{children}</a>
                   </HeadingTag>
                 )
