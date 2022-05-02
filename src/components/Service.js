@@ -8,7 +8,7 @@ export default function Service({ service }) {
   return (
     <>
       {service.id % 2 !== 0 ? (
-        <Row className={service.id === 1 ? "align-items-center" : "align-items-center mt-5"}>
+        <Row className={service.id === 1 ? "align-items-center" : "align-items-center mt-5"} key={service.id}>
           <Col md={5}>
             <div>
               <Image
@@ -34,7 +34,7 @@ export default function Service({ service }) {
           </Col>
         </Row>
       ) : (
-        <Row className="align-items-center mt-5">
+        <Row className="align-items-center mt-5" key={service.id}>
           <Col md={6}>
             <div className="mb-4">
               <h5 className="text-dark font-weight-normal mb-3 pt-3">{service.title}</h5>

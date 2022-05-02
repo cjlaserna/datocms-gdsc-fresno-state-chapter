@@ -2,14 +2,13 @@ import Layout from "../../src/components/Layout"
 import Hero from "../../src/components/Hero"
 import Service from "../../src/components/Service"
 import About from "../../src/components/About"
-import Footer from "../../src/components/Footer"
-import { Container } from "react-bootstrap"
 import Head from "next/head"
-import serviceSource from "../../src/assets/services.json"
-import footerSource from "../../src/assets/footer.json"
+import { isHeading } from "datocms-structured-text-utils"
 import { metaTagsFragment, responsiveImageFragment } from "../../lib/fragments"
+import { render as toPlainText } from "datocms-structured-text-to-plain-text"
 import { request } from "../../lib/datocms"
-import { StructuredText, useQuerySubscription, renderMetaTags } from "react-datocms"
+import { StructuredText, useQuerySubscription, renderMetaTags, renderNodeRule } from "react-datocms"
+import { Row, Container, Col } from "react-bootstrap"
 
 export async function getStaticPaths() {
   const data = await request({ query: `{ allLandingPages { slug } }` })
@@ -40,18 +39,36 @@ export async function getStaticProps({ params, preview = false }) {
             value
             blocks {
               __typename
-              ...on AboutBlockRecord {
+              ... on LinksToModelRecord {
+                __typename
                 id
-                title
+                links {
+                  ... on ServiceRecord {
+                    __typename
+                    id
+                    title
+                    ctaLink
+                    text
+                    image {
+                      responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 100, h: 100, sat: -100}) {
+                        ...responsiveImageFragment
+                      }
+                    }
+                  }
+                }
               }
-              ...on ServiceRecord {
+              ... on SectionRecord {
                 id
-                title
-                ctaLink
-                text
-                image {
-                  responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 100, h: 100, sat: -100}) {
-                    ...responsiveImageFragment
+                content {
+                  ...on AboutBlockRecord {
+                    __typename
+                    title
+                    text
+                  }
+                  ...on TitleBlockRecord {
+                    id
+                    __typename
+                    title
                   }
                 }
               }
@@ -107,16 +124,52 @@ export default function LandingPage({ subscription }) {
         <Container>
           <StructuredText
             data={landingPage.content}
-            renderBlock={({ record }, ...props) => {
+            renderBlock={({ record }) => {
               switch (record.__typename) {
-                case "AboutBlockRecord":
-                  return <About record={record} />
-                case "ServiceRecord":
-                  return <Service service={record} />
+                case "LinksToModelRecord":
+                  return record.links.map((link) => {
+                    if (link.__typename === "ServiceRecord") {
+                      return <Service service={link} />
+                    }
+                  })
+                  return null
+                case "SectionRecord":
+                  const blocks = record.content.map((rec) => {
+                    if (rec.__typename === "AboutBlockRecord") {
+                      return <About record={rec} />
+                    } else if (rec.__typename === "TitleBlockRecord") {
+                      return (
+                        <Col md={4} key={rec.id}>
+                          <h2 className="font-weight-light line-height-1_6 text-dark mb-4">{rec.title}</h2>
+                        </Col>
+                      )
+                    }
+                  })
+
+                  return (
+                    <Row className="justify-content-center mt-5" key={record.id}>
+                      {blocks}
+                    </Row>
+                  )
                 default:
                   return null
               }
             }}
+            customNodeRules={[
+              renderNodeRule(isHeading, ({ node, children, key }) => {
+                const HeadingTag = `h${node.level}`
+                const anchor = toPlainText(node)
+                  .toLowerCase()
+                  .replace(/ /g, "-")
+                  .replace(/[^\w-]+/g, "")
+
+                return (
+                  <HeadingTag key={key} id={anchor}>
+                    <a href={`#${anchor}`}>{children}</a>
+                  </HeadingTag>
+                )
+              }),
+            ]}
           />
         </Container>
       </section>

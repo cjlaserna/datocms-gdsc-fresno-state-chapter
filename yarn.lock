@@ -411,11 +411,19 @@
   "resolved" "https://registry.npmjs.org/datocms-listen/-/datocms-listen-0.1.8.tgz"
   "version" "0.1.8"
 
-"datocms-structured-text-generic-html-renderer@^2.0.1":
+"datocms-structured-text-generic-html-renderer@^2.0.1", "datocms-structured-text-generic-html-renderer@^2.0.4":
   "integrity" "sha512-Rv5Y1eC9NZXNSz3FHvHGFvGnKEEbvG1kQWlylpCSoeDBZPBwSWAFD/ixIAOfa8Yk1EVpmoQd3KQd725WKYJwRQ=="
   "resolved" "https://registry.npmjs.org/datocms-structured-text-generic-html-renderer/-/datocms-structured-text-generic-html-renderer-2.0.4.tgz"
   "version" "2.0.4"
   dependencies:
+    "datocms-structured-text-utils" "^2.0.4"
+
+"datocms-structured-text-to-plain-text@^2.0.4":
+  "integrity" "sha512-/0VQNo6xZXiGdnHCTIoEmdnwD1JZVMMsyEfSy2SNF7QW4YAOz8bKtWSwCT4cYRKrhA/jZWCq7G4u0kPmiy1FWg=="
+  "resolved" "https://registry.npmjs.org/datocms-structured-text-to-plain-text/-/datocms-structured-text-to-plain-text-2.0.4.tgz"
+  "version" "2.0.4"
+  dependencies:
+    "datocms-structured-text-generic-html-renderer" "^2.0.4"
     "datocms-structured-text-utils" "^2.0.4"
 
 "datocms-structured-text-utils@^2.0.1", "datocms-structured-text-utils@^2.0.4":
