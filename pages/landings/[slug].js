@@ -29,6 +29,7 @@ export async function getStaticProps({ params, preview = false }) {
           }
         }
         landingPage(filter: {slug: {eq: $slug}}) {
+          slug
           seo: _seoMetaTags {
             ...metaTagsFragment
           }
@@ -39,7 +40,9 @@ export async function getStaticProps({ params, preview = false }) {
               ...responsiveImageFragment
             }
           }
-          slug
+          primaryColor {
+            hex
+          }
           content {
             value
             blocks {
@@ -117,10 +120,9 @@ export default function LandingPage({ subscription }) {
   const metaTags = landingPage.seo.concat(site.favicon)
 
   return (
-    <Layout pageTitle="Landing Page Template in Next.js">
+    <Layout>
       <Head>{renderMetaTags(metaTags)}</Head>
       <Hero record={landingPage} />
-
       <StructuredText
         data={landingPage.content}
         renderBlock={({ record }) => {
