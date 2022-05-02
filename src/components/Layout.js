@@ -14,7 +14,6 @@ export default function Layout(props) {
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
       </Head>
       <Header />
-
       <div>{props.children}</div>
       <Footer links={footerLinks} />
     </div>

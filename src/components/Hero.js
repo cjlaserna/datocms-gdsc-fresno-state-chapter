@@ -1,6 +1,5 @@
 import React from "react"
 import { Container, Row, Col } from "react-bootstrap"
-import hero from "../assets/images/hero.png"
 import Link from "next/link"
 import { Image } from "react-datocms"
 
@@ -22,7 +21,7 @@ export default function Hero({ record: { heroTitle, heroSubtitle, heroImage } })
           </Col>
           <Col lg={6}>
             <div className="mt-5 mt-lg-0">
-              <Image data={heroImage.responsiveImage} className="img-fluid d-block mx-auto" />
+              <Image data={heroImage.responsiveImage} className="img-fluid d-block mx-auto" alt={heroImage.alt} />
             </div>
           </Col>
         </Row>

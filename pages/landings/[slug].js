@@ -3,7 +3,7 @@ import Hero from "../../src/components/Hero"
 import Service from "../../src/components/Service"
 import About from "../../src/components/About"
 import Head from "next/head"
-import { isHeading, isParagraph } from "datocms-structured-text-utils"
+import { isHeading } from "datocms-structured-text-utils"
 import { metaTagsFragment, responsiveImageFragment } from "../../lib/fragments"
 import { render as toPlainText } from "datocms-structured-text-to-plain-text"
 import { request } from "../../lib/datocms"
@@ -44,24 +44,6 @@ export async function getStaticProps({ params, preview = false }) {
             value
             blocks {
               __typename
-              ... on LinksToModelRecord {
-                __typename
-                id
-                links {
-                  ... on ServiceRecord {
-                    __typename
-                    id
-                    title
-                    ctaLink
-                    text
-                    image {
-                      responsiveImage(imgixParams: {fm: jpg, fit: crop}) {
-                        ...responsiveImageFragment
-                      }
-                    }
-                  }
-                }
-              }
               ... on SectionRecord {
                 id
                 title
@@ -76,6 +58,24 @@ export async function getStaticProps({ params, preview = false }) {
                     id
                     __typename
                     title
+                  }
+                  ... on LinksToModelRecord {
+                    __typename
+                    id
+                    links {
+                      ... on ServiceRecord {
+                        __typename
+                        id
+                        title
+                        ctaLink
+                        text
+                        image {
+                          responsiveImage(imgixParams: {fm: jpg, fit: crop}) {
+                            ...responsiveImageFragment
+                          }
+                        }
+                      }
+                    }
                   }
                 }
               }
@@ -120,68 +120,66 @@ export default function LandingPage({ subscription }) {
     <Layout pageTitle="Landing Page Template in Next.js">
       <Head>{renderMetaTags(metaTags)}</Head>
       <Hero record={landingPage} />
-      <section className="section" id="about">
-        <Container>
-          <StructuredText
-            data={landingPage.content}
-            renderBlock={({ record }) => {
-              switch (record.__typename) {
-                case "LinksToModelRecord":
-                  return record.links.map((link) => {
-                    if (link.__typename === "ServiceRecord") {
-                      return <Service service={link} />
-                    }
-                  })
-                case "SectionRecord":
-                  const blocks = record.content.map((rec) => {
-                    if (rec.__typename === "AboutBlockRecord") {
-                      return <About record={rec} />
-                    } else if (rec.__typename === "TitleBlockRecord") {
-                      return (
-                        <Col md={4} key={rec.id}>
-                          <h2 className="font-weight-light line-height-1_6 text-dark mb-4">{rec.title}</h2>
-                        </Col>
-                      )
-                    }
-                  })
 
-                  return (
-                    <section className="section bg-light">
-                      <Container>
-                        <div className="title text-center mb-5">
-                          <h3 className="font-weight-normal text-dark">{record.title}</h3>
-                          <p className="text-muted">{record.subtitle}</p>
-                          {blocks.length > 0 && (
-                            <Row className="justify-content-center mt-5" key={record.id}>
-                              {blocks}
-                            </Row>
-                          )}
-                        </div>
-                      </Container>
-                    </section>
-                  )
-                default:
-                  return null
-              }
-            }}
-            customNodeRules={[
-              renderNodeRule(isHeading, ({ node, children, key }) => {
-                const HeadingTag = `h${node.level}`
-                const anchor = toPlainText(node)
-                  .toLowerCase()
-                  .replace(/ /g, "-")
-                  .replace(/[^\w-]+/g, "")
+      <StructuredText
+        data={landingPage.content}
+        renderBlock={({ record }) => {
+          switch (record.__typename) {
+            case "SectionRecord":
+              const blocks = record.content.map((rec) => {
+                switch (rec.__typename) {
+                  case "AboutBlockRecord":
+                    return <About record={rec} />
+                  case "TitleBlockRecord":
+                    return (
+                      <Col md={4} key={rec.id}>
+                        <h2 className="font-weight-light line-height-1_6 text-dark mb-4">{rec.title}</h2>
+                      </Col>
+                    )
+                  case "LinksToModelRecord":
+                    return rec.links.map((link) => {
+                      if (link.__typename === "ServiceRecord") {
+                        return <Service service={link} />
+                      }
+                    })
+                }
+              })
 
-                return (
-                  <HeadingTag key={key} id={anchor} className="font-weight-normal text-warning mb-3">
-                    <a href={`#${anchor}`}>{children}</a>
-                  </HeadingTag>
-                )
-              }),
-            ]}
-          />
-        </Container>
-      </section>
+              return (
+                <section className="section">
+                  <Container>
+                    <div className="title mb-5">
+                      <h3 className="font-weight-normal text-dark text-center">{record.title}</h3>
+                      <p className="text-muted text-center">{record.text}</p>
+                      {blocks.length > 0 && (
+                        <Row className="justify-content-center mt-5" key={record.id}>
+                          {blocks}
+                        </Row>
+                      )}
+                    </div>
+                  </Container>
+                </section>
+              )
+            default:
+              return null
+          }
+        }}
+        customNodeRules={[
+          renderNodeRule(isHeading, ({ node, children, key }) => {
+            const HeadingTag = `h${node.level}`
+            const anchor = toPlainText(node)
+              .toLowerCase()
+              .replace(/ /g, "-")
+              .replace(/[^\w-]+/g, "")
+
+            return (
+              <HeadingTag key={key} id={anchor} className="font-weight-normal text-warning mb-3">
+                <a href={`#${anchor}`}>{children}</a>
+              </HeadingTag>
+            )
+          }),
+        ]}
+      />
     </Layout>
   )
 }

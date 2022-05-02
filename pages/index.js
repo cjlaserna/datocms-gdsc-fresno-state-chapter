@@ -1,7 +1,6 @@
-import Layout from "../src/app/components/Layout"
-import { responsiveImageFragment } from "../lib/fragments"
+import Layout from "../src/components/Layout"
 import { request } from "../lib/datocms"
-import { useQuerySubscription, renderMetaTags } from "react-datocms"
+import { useQuerySubscription } from "react-datocms"
 import Link from "next/link"
 import { Container, Row, Col } from "react-bootstrap"
 
@@ -14,8 +13,7 @@ export async function getStaticProps({ params, preview = false }) {
           slug
         }
       }
-      ${responsiveImageFragment}
-    `,
+          `,
     preview,
   }
   return {
