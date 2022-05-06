@@ -40,9 +40,6 @@ export async function getStaticProps({ params, preview = false }) {
               ...responsiveImageFragment
             }
           }
-          primaryColor {
-            hex
-          }
           content {
             value
             blocks {
