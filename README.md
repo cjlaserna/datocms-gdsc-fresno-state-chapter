@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). Read the full tutorial on how to build a [landing page builder](https://www.datocms.com/blog/landing-page-builder), or get started right away with DatoCMS [landing page template](https://www.datocms.com/marketplace/starters/landing-page-template).
 
 ## Getting Started
 
