@@ -10,6 +10,14 @@ import { request } from "../../lib/datocms"
 import { StructuredText, useQuerySubscription, renderMetaTags, renderNodeRule } from "react-datocms"
 import { Row, Container, Col } from "react-bootstrap"
 
+const slugify = (str) =>
+  str
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/[\s_-]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+
 export async function getStaticPaths() {
   const data = await request({ query: `{ allLandingPages { slug } }` })
 
@@ -132,7 +140,7 @@ export default function LandingPage({ subscription }) {
                   case "TitleBlockRecord":
                     return (
                       <Col md={4} key={rec.id}>
-                        <h2 className="font-weight-light line-height-1_6 text-dark mb-4">{rec.title}</h2>
+                        <h3 className="font-weight-light line-height-1_6 text-dark mb-4">{rec.title}</h3>
                       </Col>
                     )
                   case "LinksToModelRecord":
@@ -147,15 +155,15 @@ export default function LandingPage({ subscription }) {
               return (
                 <section className="section">
                   <Container>
-                    <div className="title mb-5">
-                      <h3 className="font-weight-normal text-dark text-center">{record.title}</h3>
-                      <p className="text-muted text-center">{record.text}</p>
-                      {blocks.length > 0 && (
-                        <Row className="justify-content-center mt-5" key={record.id}>
-                          {blocks}
-                        </Row>
-                      )}
-                    </div>
+                    <h2 className="text-lg text-dark text-center mb-4" key={record.id} id={slugify(record.title)}>
+                      {record.title}
+                    </h2>
+                    <p className="text-muted text-center mb-5">{record.text}</p>
+                    {blocks.length > 0 && (
+                      <Row className="justify-content-center" key={record.id + "-block"}>
+                        {blocks}
+                      </Row>
+                    )}
                   </Container>
                 </section>
               )
@@ -170,6 +178,8 @@ export default function LandingPage({ subscription }) {
               .toLowerCase()
               .replace(/ /g, "-")
               .replace(/[^\w-]+/g, "")
+
+            console.log("foo", anchor)
 
             return (
               <HeadingTag key={key} id={anchor} className="font-weight-normal text-warning mb-3">

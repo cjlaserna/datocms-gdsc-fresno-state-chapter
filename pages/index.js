@@ -44,14 +44,14 @@ export default function LandingPage({ subscription }) {
         <Container>
           <Row className="justify-content-center">
             <Col lg={6} md={8}>
-              <div className="title text-center mb-5">
-                <h3 className="font-weight-normal text-dark">
+              <div className="title text-center mb-5 mt-5">
+                <h1 className="font-weight-bold text-dark mb-5">
                   <span className="text-warning">All landing pages</span>
-                </h3>
+                </h1>
                 {landings &&
                   landings.map(({ slug, heroTitle }) => {
                     return (
-                      <div key={slug}>
+                      <div key={slug} className="text-center mb-2">
                         <Link href={`/landings/${slug}`}>
                           <a>{heroTitle}</a>
                         </Link>
