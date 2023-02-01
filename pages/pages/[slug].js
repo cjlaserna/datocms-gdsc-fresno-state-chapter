@@ -19,10 +19,10 @@ const slugify = (str) =>
     .replace(/^-+|-+$/g, "")
 
 export async function getStaticPaths() {
-  const data = await request({ query: `{ allLandingPages { slug } }` })
+  const data = await request({ query: `{ allPages { slug } }` })
 
   return {
-    paths: data.allLandingPages.map((landing) => `/landings/${landing.slug}`),
+    paths: data.allPages.map((page) => `/pages/${page.slug}`),
     fallback: false,
   }
 }
@@ -30,13 +30,13 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params, preview = false }) {
   const graphqlRequest = {
     query: `
-      query LandingBySlug($slug: String) {
+      query PageBySlug($slug: String) {
         site: _site {
           favicon: faviconMetaTags {
             ...metaTagsFragment
           }
         }
-        landingPage(filter: {slug: {eq: $slug}}) {
+        page(filter: {slug: {eq: $slug}}) {
           slug
           seo: _seoMetaTags {
             ...metaTagsFragment
@@ -117,19 +117,19 @@ export async function getStaticProps({ params, preview = false }) {
   }
 }
 
-export default function LandingPage({ subscription }) {
+export default function Page({ subscription }) {
   const {
-    data: { site, landingPage },
+    data: { site, page },
   } = useQuerySubscription(subscription)
 
-  const metaTags = landingPage.seo.concat(site.favicon)
+  const metaTags = page.seo.concat(site.favicon)
 
   return (
     <Layout>
       <Head>{renderMetaTags(metaTags)}</Head>
-      <Hero record={landingPage} />
+      <Hero record={page} />
       <StructuredText
-        data={landingPage.content}
+        data={page.content}
         renderBlock={({ record }) => {
           switch (record.__typename) {
             case "SectionRecord":

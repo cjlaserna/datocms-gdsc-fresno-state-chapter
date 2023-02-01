@@ -1,9 +1,101 @@
+/* Tailwind */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* Google Sans */
+@font-face {
+  font-family: Google Sans;
+  src: url("./GoogleSans/GoogleSans-Bold-v1.27.ttf");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Google Sans;
+  src: url("./GoogleSans/GoogleSans-BoldItalic-v1.27.ttf");
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: Google Sans;
+  src: url("./GoogleSans/GoogleSans-Italic-v1.27.ttf");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: Google Sans;
+  src: url("./GoogleSans/GoogleSans-Medium-v1.27.ttf");
+  font-weight: Medium;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Google Sans;
+  src: url("./GoogleSans/GoogleSans-MediumItalic-v1.27.ttf");
+  font-weight: Medium;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: Google Sans;
+  src: url("./GoogleSans/GoogleSans-Regular-v1.27.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Google Sans - Display */
+@font-face {
+  font-family: Google Sans Display;
+  src: url("./GoogleSans/GoogleSansDisplay-Bold-v1.27.ttf");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Google Sans Display;
+  src: url("./GoogleSans/GoogleSansDisplay-BoldItalic-v1.27.ttf");
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: Google Sans Display;
+  src: url("./GoogleSans/GoogleSansDisplay-Italic-v1.27.ttf");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: Google Sans Display;
+  src: url("./GoogleSans/GoogleSansDisplay-Medium-v1.27.ttf");
+  font-weight: Medium;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Google Sans Display;
+  src: url("./GoogleSans/GoogleSansDisplay-MediumItalic-v1.27.ttf");
+  font-weight: Medium;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: Google Sans Display;
+  src: url("./GoogleSans/GoogleSansDisplay-Regular-v1.27.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* End of Fonts */
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "Google Sans", "Helvetica Neue", Helvetica, Arial;
 }
 
 a {
@@ -13,43 +105,4 @@ a {
 
 * {
   box-sizing: border-box;
-}
-
-.section {
-  padding-top: 100px;
-  padding-bottom: 100px;
-  position: relative;
-}
-
-.hero {
-  height: 85vh;
-  max-height: -webkit-fill-available;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-}
-
-.header {
-  padding: 0 15px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 100;
-  background: white;
-}
-.header .nav-link {
-  margin-left: 30px;
-}
-
-.header .navbar {
-  padding: 10px 0;
-  line-height: 30px;
-  height: 60px;
-  width: 100%;
-  background: #fff;
-}
-
-.footer {
-  padding-bottom: 5px;
 }

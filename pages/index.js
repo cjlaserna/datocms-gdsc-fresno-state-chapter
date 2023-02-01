@@ -8,7 +8,7 @@ export async function getStaticProps({ params, preview = false }) {
   const graphqlRequest = {
     query: `
       {
-        landings: allLandingPages {
+        pages: allPages {
           heroTitle
           slug
         }
@@ -16,6 +16,7 @@ export async function getStaticProps({ params, preview = false }) {
           `,
     preview,
   }
+
   return {
     props: {
       subscription: preview
@@ -35,7 +36,7 @@ export async function getStaticProps({ params, preview = false }) {
 
 export default function LandingPage({ subscription }) {
   const {
-    data: { landings },
+    data: { pages },
   } = useQuerySubscription(subscription)
 
   return (
@@ -46,13 +47,13 @@ export default function LandingPage({ subscription }) {
             <Col lg={6} md={8}>
               <div className="title text-center mb-5 mt-5">
                 <h1 className="font-weight-bold text-dark mb-5">
-                  <span className="text-warning">All landing pages</span>
+                  <span className="text-warning">All pages</span>
                 </h1>
-                {landings &&
-                  landings.map(({ slug, heroTitle }) => {
+                {pages &&
+                  pages.map(({ slug, heroTitle }) => {
                     return (
                       <div key={slug} className="text-center mb-2">
-                        <Link href={`/landings/${slug}`}>
+                        <Link href={`/pages/${slug}`}>
                           <a>{heroTitle}</a>
                         </Link>
                       </div>

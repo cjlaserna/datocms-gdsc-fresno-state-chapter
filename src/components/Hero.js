@@ -21,7 +21,11 @@ export default function Hero({ record: { heroTitle, heroSubtitle, heroImage } })
           </Col>
           <Col lg={6}>
             <div className="mt-5 mt-lg-0">
-              <Image data={heroImage.responsiveImage} className="img-fluid d-block mx-auto" alt={heroImage.alt} />
+              {heroImage?.responsiveImage ? (
+                <Image data={heroImage.responsiveImage} className="img-fluid d-block mx-auto" alt={heroImage.alt} />
+              ) : (
+                ""
+              )}
             </div>
           </Col>
         </Row>
