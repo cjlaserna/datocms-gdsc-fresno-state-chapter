@@ -1,4 +1,5 @@
 import React from "react"
+import Link from "next/link"
 
 export default function Footer({ links }) {
   return (
@@ -19,7 +20,7 @@ export default function Footer({ links }) {
                   <ul className="list-unstyled company-sub-menu">
                     {link.child.map((fLink, key) => (
                       <li key={key}>
-                        <a href={fLink.link}>{fLink.title}</a>
+                        <Link href={fLink.link}>{fLink.title}</Link>
                       </li>
                     ))}
                   </ul>
@@ -31,19 +32,19 @@ export default function Footer({ links }) {
                 <p className="text-muted f-14">1234 Lorem Ipsum, 12345</p>
                 <ul className="list-unstyled footer-social-list mt-4">
                   <li className="list-inline-item">
-                    <a href="src/app/components/Footer#">
+                    <Link href="src/app/components/Footer#">
                       <i className="mdi mdi-facebook"></i>
-                    </a>
+                    </Link>
                   </li>
                   <li className="list-inline-item">
-                    <a href="src/app/components/Footer#">
+                    <Link href="src/app/components/Footer#">
                       <i className="mdi mdi-instagram"></i>
-                    </a>
+                    </Link>
                   </li>
                   <li className="list-inline-item">
-                    <a href="src/app/components/Footer#">
+                    <Link href="src/app/components/Footer#">
                       <i className="mdi mdi-linkedin"></i>
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
