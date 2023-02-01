@@ -9,6 +9,7 @@ export default function Layout({ children }) {
       <Header />
       <div>{children}</div>
       <Footer links={footerLinks} />
+      <script src="./assets/vendor/preline/dist/preline.js"></script>
     </div>
   )
 }

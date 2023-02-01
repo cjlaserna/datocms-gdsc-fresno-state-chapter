@@ -2,7 +2,6 @@ import Layout from "../src/components/Layout"
 import { request } from "../lib/datocms"
 import { useQuerySubscription } from "react-datocms"
 import Link from "next/link"
-import { Container, Row, Col } from "react-bootstrap"
 
 export async function getStaticProps({ params, preview = false }) {
   const graphqlRequest = {
@@ -41,10 +40,20 @@ export default function LandingPage({ subscription }) {
 
   return (
     <Layout pageTitle="Landing Page Template in Next.js">
-      <section className="section" id="services">
-        <Container>
-          <Row className="justify-content-center">
-            <Col lg={6} md={8}>
+      {/* Hero */}
+      <section></section>
+
+      {/* Highlights & Achievements */}
+
+      {/* Events */}
+
+      {/* Organizers */}
+
+      {/* Contact & Socials */}
+      <section className="section">
+        <div>
+          <div className="justify-content-center">
+            <div lg={6} md={8}>
               <div className="title text-center mb-5 mt-5">
                 <h1 className="font-weight-bold text-dark mb-5">
                   <span className="text-warning">All pages</span>
@@ -60,9 +69,9 @@ export default function LandingPage({ subscription }) {
                     )
                   })}
               </div>
-            </Col>
-          </Row>
-        </Container>
+            </div>
+          </div>
+        </div>
       </section>
     </Layout>
   )

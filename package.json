@@ -11,9 +11,9 @@
   "dependencies": {
     "datocms-structured-text-to-plain-text": "^2.0.4",
     "next": "^12.1.5",
+    "preline": "^1.7.0",
     "prettier": "2.6.2",
     "react": "^18.0.0",
-    "react-bootstrap": "^2.2.3",
     "react-datocms": "^3.0.12",
     "react-dom": "^18.0.0",
     "tiny-json-http": "^7.4.2"

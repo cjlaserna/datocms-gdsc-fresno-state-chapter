@@ -1,6 +1,5 @@
 import Layout from "../../src/components/Layout"
 import Hero from "../../src/components/Hero"
-import Service from "../../src/components/Service"
 import About from "../../src/components/About"
 import Head from "next/head"
 import { isHeading } from "datocms-structured-text-utils"
@@ -8,7 +7,6 @@ import { metaTagsFragment, responsiveImageFragment } from "../../lib/fragments"
 import { render as toPlainText } from "datocms-structured-text-to-plain-text"
 import { request } from "../../lib/datocms"
 import { StructuredText, useQuerySubscription, renderMetaTags, renderNodeRule } from "react-datocms"
-import { Row, Container, Col } from "react-bootstrap"
 
 const slugify = (str) =>
   str
@@ -67,24 +65,6 @@ export async function getStaticProps({ params, preview = false }) {
                     __typename
                     title
                   }
-                  ... on LinksToModelRecord {
-                    __typename
-                    id
-                    links {
-                      ... on ServiceRecord {
-                        __typename
-                        id
-                        title
-                        ctaLink
-                        text
-                        image {
-                          responsiveImage(imgixParams: {fm: jpg, fit: crop}) {
-                            ...responsiveImageFragment
-                          }
-                        }
-                      }
-                    }
-                  }
                 }
               }
             }
@@ -139,32 +119,26 @@ export default function Page({ subscription }) {
                     return <About record={rec} />
                   case "TitleBlockRecord":
                     return (
-                      <Col md={4} key={rec.id}>
+                      <div md={4} key={rec.id}>
                         <h3 className="font-weight-light line-height-1_6 text-dark mb-4">{rec.title}</h3>
-                      </Col>
+                      </div>
                     )
-                  case "LinksToModelRecord":
-                    return rec.links.map((link) => {
-                      if (link.__typename === "ServiceRecord") {
-                        return <Service service={link} />
-                      }
-                    })
                 }
               })
 
               return (
                 <section className="section">
-                  <Container>
+                  <div>
                     <h2 className="text-lg text-dark text-center mb-4" key={record.id} id={slugify(record.title)}>
                       {record.title}
                     </h2>
                     <p className="text-muted text-center mb-5">{record.text}</p>
                     {blocks.length > 0 && (
-                      <Row className="justify-content-center" key={record.id + "-block"}>
+                      <div className="justify-content-center" key={record.id + "-block"}>
                         {blocks}
-                      </Row>
+                      </div>
                     )}
-                  </Container>
+                  </div>
                 </section>
               )
             default:
