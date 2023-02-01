@@ -1,11 +1,31 @@
 import React from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import googleDevLogo from "../assets/google_developers_logomark_color.png"
+import { useTheme } from "next-themes"
+import { FiMoon, FiSun } from "react-icons/fi"
 
 // header / navbar
 
 // @TODO Pages: Home, Highlights (Show up to 3), Events, Organizers, Contact Us
 export default function Header() {
+  const [mounted, setMounted] = useState(false)
+  const { systemTheme, theme, setTheme } = useTheme()
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const renderThemeChanger = () => {
+    if (!mounted) return null
+    const currentTheme = theme === "system" ? systemTheme : theme
+    if (currentTheme === "dark") {
+      return <FiSun className="w-5 h-5 " role="button" onClick={() => setTheme("light")} />
+    } else {
+      return <FiMoon className="w-5 h-5 " role="button" onClick={() => setTheme("dark")} />
+    }
+  }
+
   return (
     <header className="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white text-sm py-4 dark:bg-gray-800">
       <nav className="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between" aria-label="Global">
@@ -80,6 +100,9 @@ export default function Header() {
             >
               Connect
             </a>
+
+            {/* light / dark mode */}
+            <div>{renderThemeChanger()}</div>
           </div>
         </div>
       </nav>

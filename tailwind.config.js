@@ -8,6 +8,12 @@ module.exports = {
   ],
   darkMode: "class",
   theme: {
+    minHeight: {
+      300: "300px",
+      500: "500px",
+      450: "450px",
+      600: "600px",
+    },
     colors: {
       blue: "#1fb6ff",
       purple: "#7e5bef",

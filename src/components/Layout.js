@@ -5,7 +5,7 @@ import footerLinks from "../assets/footer.json"
 
 export default function Layout({ children }) {
   return (
-    <div>
+    <div className="bg-white dark:bg-black">
       <Header />
       <div>{children}</div>
       <Footer links={footerLinks} />

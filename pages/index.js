@@ -2,6 +2,8 @@ import Layout from "../src/components/Layout"
 import { request } from "../lib/datocms"
 import { useQuerySubscription } from "react-datocms"
 import Link from "next/link"
+import Head from "next/head"
+import Script from "next/script"
 
 export async function getStaticProps({ params, preview = false }) {
   const graphqlRequest = {
@@ -41,7 +43,8 @@ export default function LandingPage({ subscription }) {
   return (
     <Layout pageTitle="Landing Page Template in Next.js">
       {/* Hero */}
-      <section></section>
+      {/* @TODO: Add datocms integration */}
+      <section className="min-h-300 heroImg flex justify-center items-center">GSDC - Fresno State Chapter</section>
 
       {/* Highlights & Achievements */}
 

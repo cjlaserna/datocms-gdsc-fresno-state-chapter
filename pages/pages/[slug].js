@@ -55,11 +55,6 @@ export async function getStaticProps({ params, preview = false }) {
                 title
                 text
                 content {
-                  ...on AboutBlockRecord {
-                    __typename
-                    title
-                    text
-                  }
                   ...on TitleBlockRecord {
                     id
                     __typename
@@ -115,8 +110,6 @@ export default function Page({ subscription }) {
             case "SectionRecord":
               const blocks = record.content.map((rec) => {
                 switch (rec.__typename) {
-                  case "AboutBlockRecord":
-                    return <About record={rec} />
                   case "TitleBlockRecord":
                     return (
                       <div md={4} key={rec.id}>
