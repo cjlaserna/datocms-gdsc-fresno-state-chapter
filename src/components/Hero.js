@@ -2,6 +2,7 @@ import React from "react"
 import Link from "next/link"
 import { useEffect } from "react"
 
+// @TODO: Add support for custom bg images
 export default function Hero({ record: { heroTitle, heroSubtitle, heroImage, linkText, linkUrl, pageLink } }) {
   return (
     <section className="relative min-h-300 heroImg flex justify-center items-center">

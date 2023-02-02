@@ -45,17 +45,6 @@ export async function getStaticProps({ params, preview = false, landingHeroDetai
 
   return {
     props: {
-      subscription: preview
-        ? {
-            ...graphqlRequest,
-            initialData: await request(graphqlRequest),
-            token: process.env.DATOCMS_API_READONLY_TOKEN,
-            environment: process.env.NEXT_DATOCMS_ENVIRONMENT || null,
-          }
-        : {
-            enabled: false,
-            initialData: await request(graphqlRequest),
-          },
       landingHero: landingHeroDetails
         ? {
             ...landingHeroReq,
@@ -71,50 +60,33 @@ export async function getStaticProps({ params, preview = false, landingHeroDetai
   }
 }
 
-export default function LandingPage({ subscription, landingHero }) {
-  const {
-    data: { pages },
-  } = useQuerySubscription(subscription)
-
+export default function LandingPage({ landingHero }) {
   const { data: hero } = useQuerySubscription(landingHero)
 
   const heroDetails = hero.landing
 
   return (
-    <Layout pageTitle="Landing Page Template in Next.js">
+    <Layout pageTitle="GDSC - Fresno State Website">
       {/* Hero */}
       {/* @TODO: Add datocms integration */}
       <Hero record={heroDetails} />
 
       {/* Highlights & Achievements */}
-
+      <section className="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between py-5">
+        <h2 className="text-2xl font-bold"> Highlights & Achievements </h2>
+      </section>
       {/* Events */}
+      <section className="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between py-5">
+        <h2 className="text-2xl font-bold"> Events</h2>
+      </section>
 
       {/* Organizers */}
-
+      <section className="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between py-5">
+        <h2 className="text-2xl font-bold"> Organizers</h2>
+      </section>
       {/* Contact & Socials */}
-      <section className="section">
-        <div>
-          <div className="justify-content-center">
-            <div lg={6} md={8}>
-              <div className="title text-center mb-5 mt-5">
-                <h1 className="font-weight-bold text-dark mb-5">
-                  <span className="text-warning">All pages</span>
-                </h1>
-                {pages &&
-                  pages.map(({ slug, heroTitle }) => {
-                    return (
-                      <div key={slug} className="text-center mb-2">
-                        <Link href={`/pages/${slug}`}>
-                          <a>{heroTitle}</a>
-                        </Link>
-                      </div>
-                    )
-                  })}
-              </div>
-            </div>
-          </div>
-        </div>
+      <section className="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between py-5">
+        <h2 className="text-2xl font-bold"> Connect with us</h2>
       </section>
     </Layout>
   )

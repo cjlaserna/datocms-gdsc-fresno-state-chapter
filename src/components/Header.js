@@ -23,11 +23,11 @@ export default function Header() {
   const renderThemeChanger = () => {
     if (!mounted) return null
     const currentTheme = theme === "system" ? systemTheme : theme
-    if (currentTheme === "night") {
+    if (currentTheme === "business") {
       return (
         <>
-          <FiSun className="w-5 h-5" role="button" onClick={() => setTheme("light")} />
-          <p className="lg:hidden md:hidden sm:block" onClick={() => setTheme("light")}>
+          <FiSun className="w-5 h-5" role="button" onClick={() => setTheme("corporate")} />
+          <p className="lg:hidden md:hidden sm:block" onClick={() => setTheme("corporate")}>
             Set Light Mode
           </p>
         </>
@@ -35,8 +35,8 @@ export default function Header() {
     } else {
       return (
         <>
-          <FiMoon className="w-5 h-5 " role="button" onClick={() => setTheme("night")} />
-          <p className="lg:hidden md:hidden sm:block" onClick={() => setTheme("night")}>
+          <FiMoon className="w-5 h-5 " role="button" onClick={() => setTheme("business")} />
+          <p className="lg:hidden md:hidden sm:block" onClick={() => setTheme("business")}>
             Set Dark Mode
           </p>
         </>
