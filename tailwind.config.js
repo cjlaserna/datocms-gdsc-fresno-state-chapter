@@ -28,11 +28,17 @@ module.exports = {
       borderRadius: {
         "4xl": "2rem",
       },
-      colors: {
-        "gray-dark": "#273444",
-        "gray-light": "#d3dce6",
-      },
     },
   },
-  plugins: [require("preline/plugin")],
+  plugins: [require("daisyui"), require("@tailwindcss/typography")],
+  daisyui: {
+    styled: true,
+    themes: ["light", "night"],
+    base: true,
+    utils: true,
+    logs: true,
+    rtl: false,
+    prefix: "",
+    darkTheme: "night",
+  },
 }
