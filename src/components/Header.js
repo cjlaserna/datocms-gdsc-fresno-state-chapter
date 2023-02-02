@@ -35,7 +35,9 @@ export default function Header() {
             <div className="w-10 h-auto flex items-center justify-center">
               <Image src={googleDevLogo} alt="Google Student Developers Club Logo" />
             </div>
-            <p className="whitespace-nowrap">GSDC - Fresno State</p>
+            <p className="whitespace-nowrap">
+              <Link href="/">GDSC - Fresno State</Link>
+            </p>
           </div>
           <div className="sm:hidden">
             <button
@@ -74,7 +76,7 @@ export default function Header() {
           className="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block"
         >
           <div className="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5">
-            <Link className="font-medium text-blue-500" href="/" aria-current="page">
+            <Link className="font-medium text-blue-500" href="/">
               Home
             </Link>
             <Link

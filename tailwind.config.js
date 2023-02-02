@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const colors = require("tailwindcss/colors")
+
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -14,17 +17,6 @@ module.exports = {
       450: "450px",
       600: "600px",
     },
-    colors: {
-      blue: "#1fb6ff",
-      purple: "#7e5bef",
-      pink: "#ff49db",
-      orange: "#ff7849",
-      green: "#13ce66",
-      yellow: "#ffc82c",
-      "gray-dark": "#273444",
-      gray: "#8492a6",
-      "gray-light": "#d3dce6",
-    },
     fontFamily: {
       sans: ["Google Sans", "Helvetica Neue", "Helvetica", "Arial"],
     },
@@ -35,6 +27,10 @@ module.exports = {
       },
       borderRadius: {
         "4xl": "2rem",
+      },
+      colors: {
+        "gray-dark": "#273444",
+        "gray-light": "#d3dce6",
       },
     },
   },

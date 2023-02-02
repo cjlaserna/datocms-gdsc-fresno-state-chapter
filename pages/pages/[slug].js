@@ -146,7 +146,7 @@ export default function Page({ subscription }) {
               .replace(/ /g, "-")
               .replace(/[^\w-]+/g, "")
 
-            console.log("foo", anchor)
+            // console.log("foo", anchor)
 
             return (
               <HeadingTag key={key} id={anchor} className="font-weight-normal text-warning mb-3">
