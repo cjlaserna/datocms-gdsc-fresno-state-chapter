@@ -32,17 +32,17 @@ export default function Footer({ links }) {
                 <p className="text-muted f-14">1234 Lorem Ipsum, 12345</p>
                 <ul className="list-unstyled footer-social-list mt-4">
                   <li className="list-inline-item">
-                    <Link href="src/app/components/Footer#">
+                    <Link href="src/app/components/Footer#" passHref>
                       <i className="mdi mdi-facebook"></i>
                     </Link>
                   </li>
                   <li className="list-inline-item">
-                    <Link href="src/app/components/Footer#">
+                    <Link href="src/app/components/Footer#" passHref>
                       <i className="mdi mdi-instagram"></i>
                     </Link>
                   </li>
                   <li className="list-inline-item">
-                    <Link href="src/app/components/Footer#">
+                    <Link href="src/app/components/Footer#" passHref>
                       <i className="mdi mdi-linkedin"></i>
                     </Link>
                   </li>
