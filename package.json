@@ -19,8 +19,7 @@
     "react-datocms": "^3.0.12",
     "react-dom": "^18.0.0",
     "react-icons": "^4.7.1",
-    "tiny-json-http": "^7.4.2",
-    "use-hooks": "^2.0.0-rc.5"
+    "tiny-json-http": "^7.4.2"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^12.1.5",
