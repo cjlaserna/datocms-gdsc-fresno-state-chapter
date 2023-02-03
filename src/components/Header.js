@@ -27,7 +27,7 @@ export default function Header() {
       return (
         <>
           <FiSun className="w-5 h-5" role="button" onClick={() => setTheme("corporate")} />
-          <p className="lg:hidden md:hidden sm:block" onClick={() => setTheme("corporate")}>
+          <p className="md:hidden" onClick={() => setTheme("corporate")}>
             Set Light Mode
           </p>
         </>
@@ -36,7 +36,7 @@ export default function Header() {
       return (
         <>
           <FiMoon className="w-5 h-5 " role="button" onClick={() => setTheme("business")} />
-          <p className="lg:hidden md:hidden sm:block" onClick={() => setTheme("business")}>
+          <p className="md:hidden" onClick={() => setTheme("business")}>
             Set Dark Mode
           </p>
         </>
@@ -46,7 +46,7 @@ export default function Header() {
 
   return (
     <header className="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-base-100 text-sm py-4 dark:bg-gray-800">
-      <nav className="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between" aria-label="Global">
+      <nav className="max-w-[85rem] w-full mx-auto px-4 md:flex sm:items-center sm:justify-between" aria-label="Global">
         <div className="flex items-center justify-between">
           <div className="inline-flex items-center gap-x-2 text-xl dark:text-white">
             <div className="w-10 h-auto flex items-center justify-center">
@@ -56,7 +56,7 @@ export default function Header() {
               <Link href="/">GDSC - Fresno State</Link>
             </p>
           </div>
-          <div className="dropdown dropdown-left sm:hidden">
+          <div className="dropdown dropdown-left md:hidden">
             <label tabIndex="0" className="btn btn-ghost btn-circle">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -85,9 +85,9 @@ export default function Header() {
         </div>
         <div
           id="navbar-image-and-text-2"
-          className="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block"
+          className=" hidden overflow-hidden transition-all duration-300 basis-full grow md:block"
         >
-          <div className="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5">
+          <div className="flex flex-col gap-5 mt-5 md:flex-row md:items-center md:justify-end md:mt-0 md:pl-5">
             {navLinks.map((link, index) => {
               return (
                 <Link key={index} href={link.path}>

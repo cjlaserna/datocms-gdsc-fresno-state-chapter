@@ -6,8 +6,10 @@ import Link from "next/link"
 import Head from "next/head"
 import Script from "next/script"
 import Hero from "../src/components/Hero"
+import Section from "../src/components/Section"
 
 export async function getStaticProps({ params, preview = false, landingHeroDetails = false }) {
+  // for all pages
   const graphqlRequest = {
     query: `
       {
@@ -20,6 +22,7 @@ export async function getStaticProps({ params, preview = false, landingHeroDetai
     preview,
   }
 
+  // for landingHeroDetails
   const landingHeroReq = {
     query: `
     {
@@ -72,22 +75,24 @@ export default function LandingPage({ landingHero }) {
       <Hero record={heroDetails} />
 
       {/* Highlights & Achievements */}
-      <section className="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between py-5">
-        <h2 className="text-2xl font-bold"> Highlights & Achievements </h2>
-      </section>
+      <Section SectionTitle={"Highlights & Achievements"}>
+        <p>test</p>
+      </Section>
+
       {/* Events */}
-      <section className="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between py-5">
-        <h2 className="text-2xl font-bold"> Events</h2>
-      </section>
+      <Section SectionTitle={"Events"}>
+        <p>test</p>
+      </Section>
 
       {/* Organizers */}
-      <section className="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between py-5">
-        <h2 className="text-2xl font-bold"> Organizers</h2>
-      </section>
+      <Section SectionTitle={"Organizers"}>
+        <p>test</p>
+      </Section>
+
       {/* Contact & Socials */}
-      <section className="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between py-5">
-        <h2 className="text-2xl font-bold"> Connect with us</h2>
-      </section>
+      <Section SectionTitle={"Connect"}>
+        <p>test</p>
+      </Section>
     </Layout>
   )
 }
