@@ -131,8 +131,8 @@ export default function Page({ subscription }) {
       <Head>{renderMetaTags(metaTags)}</Head>
       <Hero record={page} />
       <div className="flex flex-1">
-        <div class="toast toast-start hidden" id="shareToast">
-          <div class="alert alert-info">
+        <div className="toast toast-start hidden" id="shareToast">
+          <div className="alert alert-info">
             <div>
               <span id="shareToastContent">New mail arrived.</span>
             </div>
