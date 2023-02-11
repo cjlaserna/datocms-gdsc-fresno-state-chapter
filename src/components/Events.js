@@ -4,7 +4,7 @@ import EventCard from "./EventCard"
 export default function Events({ allEvents }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-flow-row gap-x-[0] gap-y-10">
-      {allEvents?.map(([key, event]) => {
+      {allEvents?.map((event) => {
         var eventLink
         var eventBtn
         if (event.archive) {
@@ -27,7 +27,7 @@ export default function Events({ allEvents }) {
             cardLoc={event.eventLocation}
             cardDate={event.eventDate}
             buttonLink={eventLink}
-            id={key}
+            key={event.id}
           />
         )
       })}

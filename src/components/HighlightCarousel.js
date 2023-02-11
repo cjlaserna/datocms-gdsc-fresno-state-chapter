@@ -37,10 +37,10 @@ export default function Highlights({ allHighlights }) {
         modules={[Autoplay, Navigation]}
         className="highlights h-[20em] lg:h-[30em] md:h-[20em] sm:h-[20em]"
       >
-        {allHighlights?.map(([key, highlight]) => {
+        {allHighlights?.map((highlight) => {
           return (
             <SwiperSlide
-              id={key}
+              key={highlight.id}
               className={
                 styles.swiperSlide + " h-[20em] lg:h-[30em] md:h-[20em] sm:h-[20em] relative rounded-lg bg-base-100"
               }

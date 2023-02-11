@@ -25,9 +25,9 @@ export default function Cards({ allOrganizers }) {
           className={styles.swiper + " organizerSwiper"}
           id="organizerSwiper"
         >
-          {allOrganizers?.map(([key, organizer]) => {
+          {allOrganizers?.map((organizer) => {
             return (
-              <SwiperSlide id={key} className={styles.swiperSlide + " shadow-xl cardParent"}>
+              <SwiperSlide key={organizer.id} className={styles.swiperSlide + " shadow-xl cardParent"}>
                 <div className="h-full flex flex-col justify-center items-center">
                   {organizer.picture ? (
                     <Image
