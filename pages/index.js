@@ -9,26 +9,15 @@ import Hero from "../src/components/Hero"
 import Section from "../src/components/Section"
 import Cards from "../src/components/OrganizerCarousel"
 import Highlights from "../src/components/HighlightCarousel"
+import Events from "../src/components/Events"
+import Contact from "../src/components/Connect"
 
 export async function getStaticProps({
   params,
-  preview = false,
   landingHeroDetails = false,
   highlightsDetails = false,
+  eventDetails = false,
 }) {
-  // for all pages
-  const graphqlRequest = {
-    query: `
-      {
-        pages: allPages {
-          heroTitle
-          slug
-        }
-      }
-          `,
-    preview,
-  }
-
   // for landingHeroDetails
   const landingHeroReq = {
     query: `
@@ -72,6 +61,23 @@ export async function getStaticProps({
     highlightsDetails,
   }
 
+  const eventsReq = {
+    query: `{
+      allEvents {
+        eventName
+        eventDesc
+        eventDate
+        eventLocation
+        archive {
+          slug
+        }
+        workshopLink
+        zoomLinkIfAny
+      }
+    }`,
+    eventDetails,
+  }
+
   return {
     props: {
       landingHero: landingHeroDetails
@@ -96,16 +102,31 @@ export async function getStaticProps({
             enabled: false,
             initialData: await request(highlightsReq),
           },
+      eventsInfo: eventDetails
+        ? {
+            ...eventsReq,
+            initialData: await request(eventsReq),
+            token: process.env.DATOCMS_API_READONLY_TOKEN,
+            environment: process.env.NEXT_DATOCMS_ENVIRONMENT || null,
+          }
+        : {
+            enabled: false,
+            initialData: await request(eventsReq),
+          },
     },
   }
 }
 
-export default function LandingPage({ landingHero, highlightsInfo }) {
+export default function LandingPage({ landingHero, highlightsInfo, eventsInfo }) {
   const { data: hero } = useQuerySubscription(landingHero)
   const { data: highlightResp } = useQuerySubscription(highlightsInfo)
+  const { data: eventsResp } = useQuerySubscription(eventsInfo)
 
   const heroDetails = hero.landing
   const highlightDetails = highlightResp.allHighlights
+  const eventDetails = eventsResp.allEvents
+
+  console.log(eventDetails)
 
   return (
     <Layout pageTitle="GDSC - Fresno State Website">
@@ -143,18 +164,18 @@ export default function LandingPage({ landingHero, highlightsInfo }) {
 
       {/* Events */}
       <Section SectionTitle={"Events"}>
-        <p>test</p>
+        {eventDetails ? <Events allEvents={eventDetails} /> : <p>There are no current events</p>}
       </Section>
 
       {/* Organizers */}
       <Section SectionTitle={"Learn More about GDSC-Fresno"}>
-        <p>test</p>
-        <Cards></Cards>
+        <Cards />
+        {/* https://www.npmjs.com/package/react-initials-avatar */}
       </Section>
 
       {/* Contact & Socials */}
-      <Section SectionTitle={"Connect"}>
-        <p>test</p>
+      <Section SectionTitle={"Connect with Us!"}>
+        <Contact />
       </Section>
     </Layout>
   )

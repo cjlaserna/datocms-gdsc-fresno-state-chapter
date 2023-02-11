@@ -147,7 +147,7 @@ export default function Page({ subscription }) {
                   <FiArrowLeft className="inline mb-[2px] mr-[5px]" />
                   Home
                 </span>
-              </Link>
+              </Link>{" "}
               / <span>{page.heroTitle}</span>
             </p>
 

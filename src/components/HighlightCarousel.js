@@ -12,9 +12,8 @@ import Link from "next/link"
 // display them one at a time, big carousel stuff
 
 export default function Highlights({ allHighlights }) {
-  console.log(allHighlights)
   return (
-    <section className="h-[20em] lg:h-[30em] md:h-[20em] sm:h-[20em] flex justify-center relative items-center">
+    <section className="h-[20em] lg:h-[30em] md:h-[20em] sm:h-[20em] flex justify-center relative shadow-xl items-center">
       <div className={styles.swiper_button_prev + " swiper-button-prev swiper-button hidden md:block"}>
         <FiChevronLeft />
       </div>
@@ -39,7 +38,6 @@ export default function Highlights({ allHighlights }) {
         className="highlights h-[20em] lg:h-[30em] md:h-[20em] sm:h-[20em]"
       >
         {allHighlights?.map((highlight) => {
-          console.log(highlight)
           return (
             <SwiperSlide
               className={
@@ -61,20 +59,20 @@ export default function Highlights({ allHighlights }) {
                 )}
               </div>
               <div className="flex flex-col w-full h-full">
-                <div className="bg-transparent text-base-content md:bg-base-100/75 md:text-base-content m-0 sm:m-0 md:my-10 lg:my-10 m-0 md:mx-20 lg:mx-20 max-w-[100%] sm:max-w[100%] lg:max-w-[50%] rounded-lg p-10 flex flex-col">
-                  <h3 className="font-semibold text-lg md:text-2xl lg:text-3xl">{highlight.heroTitle}</h3>
-                  <p>{highlight.projectDescription}</p>
+                <div className="bg-transparent text-base-content md:bg-base-100 h-[100%] md:h-[85%] lg:h-full md:text-base-content m-0 sm:m-0 md:my-10 lg:my-10 m-0 md:mx-20 lg:mx-20 max-w-[100%] sm:max-w[100%] lg:max-w-[50%] rounded-lg p-5 md:p-8 lg:p-10 flex flex-col">
+                  <h3 className="font-semibold text-lg md:text-2xl lg:text-4xl ">{highlight.heroTitle}</h3>
+                  <p className="my-2 text-[1.12rem]">{highlight.projectDescription}</p>
+                  {highlight.readMorePage.slug ? (
+                    <div className="flex justify-end items-end w-full flex-1 p-2 z-[100]">
+                      <a className="btn btn-primary gap-2 w-fit-content" href={`/pages/${highlight.readMorePage.slug}`}>
+                        Learn More
+                        <FiArrowRight />
+                      </a>
+                    </div>
+                  ) : (
+                    ""
+                  )}
                 </div>
-                {highlight.readMorePage.slug ? (
-                  <div className="flex justify-end items-end w-full flex-1 p-10 z-[100]">
-                    <a class="btn btn-primary gap-2 w-fit-content" href={`/pages/${highlight.readMorePage.slug}`}>
-                      Learn More
-                      <FiArrowRight />
-                    </a>
-                  </div>
-                ) : (
-                  ""
-                )}
               </div>
             </SwiperSlide>
           )

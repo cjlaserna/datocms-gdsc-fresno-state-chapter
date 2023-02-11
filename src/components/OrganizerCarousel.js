@@ -19,15 +19,15 @@ export default function Cards() {
         className={styles.swiper + " organizerSwiper"}
         id="organizerSwiper"
       >
-        <SwiperSlide className={styles.swiperSlide + " drop-shadow-md"}>Slide 1</SwiperSlide>
-        <SwiperSlide className={styles.swiperSlide + " drop-shadow-md"}>Slide 2</SwiperSlide>
-        <SwiperSlide className={styles.swiperSlide + " drop-shadow-md"}>Slide 3</SwiperSlide>
-        <SwiperSlide className={styles.swiperSlide + " drop-shadow-md"}>Slide 4</SwiperSlide>
-        <SwiperSlide className={styles.swiperSlide + " drop-shadow-md"}>Slide 5</SwiperSlide>
-        <SwiperSlide className={styles.swiperSlide + " drop-shadow-md"}>Slide 6</SwiperSlide>
-        <SwiperSlide className={styles.swiperSlide + " drop-shadow-md"}>Slide 7</SwiperSlide>
-        <SwiperSlide className={styles.swiperSlide + " drop-shadow-md"}>Slide 8</SwiperSlide>
-        <SwiperSlide className={styles.swiperSlide + " drop-shadow-md"}>Slide 9</SwiperSlide>
+        <SwiperSlide className={styles.swiperSlide + " shadow-xl"}>Slide 1</SwiperSlide>
+        <SwiperSlide className={styles.swiperSlide + " shadow-xl"}>Slide 2</SwiperSlide>
+        <SwiperSlide className={styles.swiperSlide + " shadow-xl"}>Slide 3</SwiperSlide>
+        <SwiperSlide className={styles.swiperSlide + " shadow-xl"}>Slide 4</SwiperSlide>
+        <SwiperSlide className={styles.swiperSlide + " shadow-xl"}>Slide 5</SwiperSlide>
+        <SwiperSlide className={styles.swiperSlide + " shadow-xl"}>Slide 6</SwiperSlide>
+        <SwiperSlide className={styles.swiperSlide + " shadow-xl"}>Slide 7</SwiperSlide>
+        <SwiperSlide className={styles.swiperSlide + " shadow-xl"}>Slide 8</SwiperSlide>
+        <SwiperSlide className={styles.swiperSlide + " shadow-xl"}>Slide 9</SwiperSlide>
       </Swiper>
       <h1>Learn more about GDSC.</h1>
     </div>
