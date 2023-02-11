@@ -6,10 +6,10 @@ import footerLinks from "../assets/footer.json"
 export default function Layout({ children }) {
   return (
     <>
-      <div className="bg-base-100 ">
+      <div className="bg-base-100 flex flex-col">
         <Header />
         <div>{children}</div>
-        <Footer links={footerLinks} />
+        {/* <Footer links={footerLinks} /> */}
       </div>
     </>
   )

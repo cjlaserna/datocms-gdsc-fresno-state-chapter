@@ -9,9 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@snaily-cad/image-data-uri": "^3.1.0",
     "@tailwindcss/typography": "github:tailwindcss/typography",
     "daisyui": "^2.50.0",
     "datocms-structured-text-to-plain-text": "^2.0.4",
+    "image-to-base64": "^2.2.0",
     "in-view": "^0.6.1",
     "next": "^12.1.5",
     "next-themes": "^0.2.1",
@@ -20,6 +22,7 @@
     "react-datocms": "^3.0.12",
     "react-dom": "^18.0.0",
     "react-icons": "^4.7.1",
+    "styled-jsx": "^5.1.2",
     "swiper": "^9.0.1",
     "tiny-json-http": "^7.4.2"
   },

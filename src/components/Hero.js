@@ -21,15 +21,7 @@ export default function Hero({ record: { heroTitle, heroSubtitle, heroImage, lin
           )}
         </div>
       </div>
-      {/* <div lg={6}>
-            <div className="mt-5 mt-lg-0">
-              {heroImage?.responsiveImage ? (
-                <Image data={heroImage.responsiveImage} className="img-fluid d-block mx-auto" alt={heroImage.alt} />
-              ) : (
-                ""
-              )}
-            </div>
-          </div> */}
+      {/* @TODO: add support for custom hero imgs.. */}
     </section>
   )
 }

@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import { EffectCards, Navigation, Autoplay, Pagination } from "swiper"
 import "swiper/css"
 import "swiper/css/effect-cards"
+import styles from "../../styles/component_css/OrganizerCarousel.module.css"
 
 // fetch all & return results
 // @TODO: REMOVE DOO DOO PLUGIN: INVIEW IT DOES NOT WORK
@@ -12,25 +13,21 @@ export default function Cards() {
     <div className="organizers flex flex-row items-start justify-start">
       <Swiper
         effect={"cards"}
-        // autoplay={{
-        //   delay: 2500,
-        //   disableOnInteraction: true,
-        // }}
         grabCursor={true}
         loop={true}
         modules={[Autoplay, EffectCards]}
-        className="organizerSwiper"
+        className={styles.swiper + " organizerSwiper"}
         id="organizerSwiper"
       >
-        <SwiperSlide className="drop-shadow-md">Slide 1</SwiperSlide>
-        <SwiperSlide className="drop-shadow-md">Slide 2</SwiperSlide>
-        <SwiperSlide className="drop-shadow-md">Slide 3</SwiperSlide>
-        <SwiperSlide className="drop-shadow-md">Slide 4</SwiperSlide>
-        <SwiperSlide className="drop-shadow-md">Slide 5</SwiperSlide>
-        <SwiperSlide className="drop-shadow-md">Slide 6</SwiperSlide>
-        <SwiperSlide className="drop-shadow-md">Slide 7</SwiperSlide>
-        <SwiperSlide className="drop-shadow-md">Slide 8</SwiperSlide>
-        <SwiperSlide className="drop-shadow-md">Slide 9</SwiperSlide>
+        <SwiperSlide className={styles.swiperSlide + " drop-shadow-md"}>Slide 1</SwiperSlide>
+        <SwiperSlide className={styles.swiperSlide + " drop-shadow-md"}>Slide 2</SwiperSlide>
+        <SwiperSlide className={styles.swiperSlide + " drop-shadow-md"}>Slide 3</SwiperSlide>
+        <SwiperSlide className={styles.swiperSlide + " drop-shadow-md"}>Slide 4</SwiperSlide>
+        <SwiperSlide className={styles.swiperSlide + " drop-shadow-md"}>Slide 5</SwiperSlide>
+        <SwiperSlide className={styles.swiperSlide + " drop-shadow-md"}>Slide 6</SwiperSlide>
+        <SwiperSlide className={styles.swiperSlide + " drop-shadow-md"}>Slide 7</SwiperSlide>
+        <SwiperSlide className={styles.swiperSlide + " drop-shadow-md"}>Slide 8</SwiperSlide>
+        <SwiperSlide className={styles.swiperSlide + " drop-shadow-md"}>Slide 9</SwiperSlide>
       </Swiper>
       <h1>Learn more about GDSC.</h1>
     </div>

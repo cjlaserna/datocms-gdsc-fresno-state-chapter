@@ -95,6 +95,7 @@ html,
 body {
   padding: 0;
   margin: 0;
+  height: 100%;
   font-family: "Google Sans", "Helvetica Neue", Helvetica, Arial;
 }
 
@@ -112,4 +113,41 @@ ol {
 }
 ul {
   list-style: disc;
+}
+
+ul,
+ol {
+  list-style-position: inside;
+}
+
+ul li *,
+ol li * {
+  display: inline-block;
+}
+
+/* organizers css */
+.organizers .swiper-3d .swiper-slide-shadow {
+  background: none;
+}
+.organizers .swiper-slide:not(.swiper-slide-visible) {
+  /* opacity: 0.2; */
+}
+
+/* toasts */
+.toast {
+  opacity: 0;
+  animation: fadeOut 5s 1;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }

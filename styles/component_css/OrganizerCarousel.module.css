@@ -1,0 +1,15 @@
+.swiper {
+  width: 240px;
+  height: 320px;
+  margin: 0;
+}
+
+.swiperSlide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+
+  background-image: url("../../src/assets/Badge.png");
+  background-size: cover;
+}
