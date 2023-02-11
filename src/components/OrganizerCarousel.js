@@ -3,26 +3,19 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import { EffectCards, Navigation, Autoplay, Pagination } from "swiper"
 import "swiper/css"
 import "swiper/css/effect-cards"
-import inView from "in-view"
 
 // fetch all & return results
+// @TODO: REMOVE DOO DOO PLUGIN: INVIEW IT DOES NOT WORK
+// @TODO: Look at this for in-view functionality https://github.com/modularorg/modularscroll
 export default function Cards() {
-  useEffect(() => {
-    const swiper = document.querySelector("#organizerSwiper").swiper
-  }, [])
-
-  inView.is("#organizerSwiper").on("enter", doSomething)
-
-  inView.offset(-50)
-
   return (
     <div className="organizers flex flex-row items-start justify-start">
       <Swiper
         effect={"cards"}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: true,
-        }}
+        // autoplay={{
+        //   delay: 2500,
+        //   disableOnInteraction: true,
+        // }}
         grabCursor={true}
         loop={true}
         modules={[Autoplay, EffectCards]}
