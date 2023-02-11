@@ -7,6 +7,7 @@ import Head from "next/head"
 import Script from "next/script"
 import Hero from "../src/components/Hero"
 import Section from "../src/components/Section"
+import Cards from "../src/components/OrganizerCarousel"
 
 export async function getStaticProps({ params, preview = false, landingHeroDetails = false }) {
   // for all pages
@@ -85,8 +86,9 @@ export default function LandingPage({ landingHero }) {
       </Section>
 
       {/* Organizers */}
-      <Section SectionTitle={"Organizers"}>
+      <Section SectionTitle={"Learn More about GDSC-Fresno"}>
         <p>test</p>
+        <Cards></Cards>
       </Section>
 
       {/* Contact & Socials */}

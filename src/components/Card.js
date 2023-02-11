@@ -9,7 +9,7 @@ export default function Card({ cardTitle, cardDesc, buttonTitle, buttonLink }) {
       </figure>
       <div className="card-body">
         <h2 className="card-title">{cardTitle}</h2>
-        <p>{cardDesc}</p>
+        <p>{cardDesc ? cardDesc : ""}</p>
         <div className="card-actions justify-end">
           {buttonLink ? (
             <Link href={buttonLink}>

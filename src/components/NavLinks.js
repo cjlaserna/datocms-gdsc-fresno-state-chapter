@@ -9,8 +9,8 @@ export const navLinks = [
     path: "#events",
   },
   {
-    name: "Organizers",
-    path: "#organizers",
+    name: "About",
+    path: "#about",
   },
   {
     name: "Connect",
