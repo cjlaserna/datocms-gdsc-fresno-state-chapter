@@ -17,6 +17,7 @@ export async function getStaticProps({
   landingHeroDetails = false,
   highlightsDetails = false,
   eventDetails = false,
+  organizerDetails = false,
 }) {
   // for landingHeroDetails
   const landingHeroReq = {
@@ -78,6 +79,20 @@ export async function getStaticProps({
     eventDetails,
   }
 
+  const organizerReq = {
+    query: `{
+      allOrganizers(orderBy: _createdAt_ASC) {
+        name
+        clubPosition
+        picture {
+          responsiveImage(imgixParams: {fm: jpg, fit: crop}) {
+            ...responsiveImageFragment
+          }
+        }
+      }
+    }${responsiveImageFragment}`,
+    organizerDetails,
+  }
   return {
     props: {
       landingHero: landingHeroDetails
@@ -113,20 +128,31 @@ export async function getStaticProps({
             enabled: false,
             initialData: await request(eventsReq),
           },
+      organizerInfo: organizerDetails
+        ? {
+            ...organizerReq,
+            initialData: await request(organizerReq),
+            token: process.env.DATOCMS_API_READONLY_TOKEN,
+            environment: process.env.NEXT_DATOCMS_ENVIRONMENT || null,
+          }
+        : {
+            enabled: false,
+            initialData: await request(organizerReq),
+          },
     },
   }
 }
 
-export default function LandingPage({ landingHero, highlightsInfo, eventsInfo }) {
+export default function LandingPage({ landingHero, highlightsInfo, eventsInfo, organizerInfo }) {
   const { data: hero } = useQuerySubscription(landingHero)
   const { data: highlightResp } = useQuerySubscription(highlightsInfo)
   const { data: eventsResp } = useQuerySubscription(eventsInfo)
+  const { data: organizerResp } = useQuerySubscription(organizerInfo)
 
   const heroDetails = hero.landing
   const highlightDetails = highlightResp.allHighlights
   const eventDetails = eventsResp.allEvents
-
-  console.log(eventDetails)
+  const organizerDetails = organizerResp.allOrganizers
 
   return (
     <Layout pageTitle="GDSC - Fresno State Website">
@@ -163,14 +189,13 @@ export default function LandingPage({ landingHero, highlightsInfo, eventsInfo })
       </Section>
 
       {/* Events */}
-      <Section SectionTitle={"Events"}>
+      <Section SectionTitle={"Events"} centered>
         {eventDetails ? <Events allEvents={eventDetails} /> : <p>There are no current events</p>}
       </Section>
 
       {/* Organizers */}
-      <Section SectionTitle={"Learn More about GDSC-Fresno"}>
-        <Cards />
-        {/* https://www.npmjs.com/package/react-initials-avatar */}
+      <Section SectionTitle={"About Us"} centered>
+        <Cards allOrganizers={organizerDetails} />
       </Section>
 
       {/* Contact & Socials */}

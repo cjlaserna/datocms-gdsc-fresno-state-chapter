@@ -23,6 +23,7 @@
     "react-datocms": "^3.0.12",
     "react-dom": "^18.0.0",
     "react-icons": "^4.7.1",
+    "react-initials-avatar": "^1.1.2",
     "styled-jsx": "^5.1.2",
     "swiper": "^9.0.1",
     "tiny-json-http": "^7.4.2"

@@ -1,6 +1,5 @@
 import Layout from "../../src/components/Layout"
 import Hero from "../../src/components/Hero"
-import About from "../../src/components/About"
 import Head from "next/head"
 import { isHeading, isLink, isList } from "datocms-structured-text-utils"
 import { metaTagsFragment, responsiveImageFragment } from "../../lib/fragments"

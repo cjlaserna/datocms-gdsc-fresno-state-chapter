@@ -151,3 +151,42 @@ ol li * {
     opacity: 0;
   }
 }
+
+.slide-out-left {
+  -webkit-animation: slide-out-left 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
+  animation: slide-out-left 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
+}
+
+@-webkit-keyframes slide-out-left {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(-40px);
+    transform: translateX(-40px);
+    opacity: 0;
+  }
+}
+@keyframes slide-out-left {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(-40px);
+    transform: translateX(-40px);
+    opacity: 0;
+  }
+}
+
+.cardParent:hover .cardGesture {
+  display: block;
+  z-index: 100;
+}
+
+.cardGesture {
+  display: none;
+}

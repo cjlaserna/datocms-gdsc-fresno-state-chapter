@@ -9,7 +9,7 @@ export default function Layout({ children }) {
       <div className="bg-base-100 flex flex-col">
         <Header />
         <div>{children}</div>
-        {/* <Footer links={footerLinks} /> */}
+        <Footer links={footerLinks} />
       </div>
     </>
   )
