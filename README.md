@@ -1,3 +1,19 @@
+
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://github.com/Ericsmrk/datocms-gdsc-fresno-state-chapter">
+    <img src="src\assets\Logo1.PNG" alt="Logo" width="280" height="280">
+  </a>
+
+  <h1 style="font-size:320%;" align="center" >Google Developer Student Club, CSU Fresno, Official Webpage</h1>
+  <h1 style="font-size:300%;" align="center" >California State University, Fresno</h1>
+  <h1 style="font-size:270%;" align="center" >Official Student Managed Webpage</h1>
+
+</p>
+
+---
+
 This is a [Next.js](https://nextjs.org/) project created with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ---
