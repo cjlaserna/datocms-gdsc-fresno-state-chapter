@@ -6,7 +6,7 @@
     <img src="src\assets\Logo1.PNG" alt="Logo" width="280" height="280">
   </a>
 
-  <h1 style="font-size:320%;" align="center" >Google Developer Student Club, CSU Fresno, Official Webpage</h1>
+  <h1 style="font-size:320%;" align="center" >Google Developer Student Club</h1>
   <h1 style="font-size:300%;" align="center" >California State University, Fresno</h1>
   <h1 style="font-size:270%;" align="center" >Official Student Managed Webpage</h1>
 
