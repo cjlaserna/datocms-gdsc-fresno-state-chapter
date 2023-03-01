@@ -75,7 +75,9 @@ export default function Header() {
               {navLinks.map((link, index) => {
                 return (
                   <li key={index}>
-                    <Link href={link.path}>{link.name}</Link>
+                    <Link href={link.path} scroll={false}>
+                      {link.name}
+                    </Link>
                   </li>
                 )
               })}
@@ -90,7 +92,7 @@ export default function Header() {
           <div className="flex flex-col gap-5 mt-5 md:flex-row md:items-center md:justify-end md:mt-0 md:pl-5">
             {navLinks.map((link, index) => {
               return (
-                <Link key={index} href={link.path}>
+                <Link key={index} href={link.path} scroll={false}>
                   {link.name}
                 </Link>
               )

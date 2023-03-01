@@ -173,7 +173,7 @@ export default function LandingPage({ landingHero, highlightsInfo, eventsInfo, o
 
       {/* <Hero record={heroDetails} /> */}
       {/* Highlights & Achievements */}
-      <Section SectionTitle={""}>
+      <Section SectionTitle={""} id="highlights">
         <div className="w-full grid md:min-h-fit lg:min-h-fit bg-neutral text-neutral-content px-6 py-6 md:py-8 md:px-8 lg:py-10 ld:px-10">
           <div className="justify-self-start">
             <h1 className="font-bold text-lg md:text-2xl lg:text-3xl">{heroDetails.heroTitle}</h1>
@@ -196,17 +196,17 @@ export default function LandingPage({ landingHero, highlightsInfo, eventsInfo, o
       </Section>
 
       {/* Events */}
-      <Section SectionTitle={"Events"} centered>
+      <Section SectionTitle={"Events"} id="events" centered>
         {eventDetails ? <Events allEvents={eventDetails} /> : <p>There are no current events</p>}
       </Section>
 
       {/* Organizers */}
-      <Section SectionTitle={"About Us"} centered>
+      <Section SectionTitle={"About Us"} id="about" centered>
         <Cards allOrganizers={organizerDetails} />
       </Section>
 
       {/* Contact & Socials */}
-      <Section SectionTitle={"Connect with Us!"}>
+      <Section SectionTitle={"Connect with Us!"} id="connect">
         <Contact />
       </Section>
     </Layout>

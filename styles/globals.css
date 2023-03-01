@@ -97,6 +97,7 @@ body {
   margin: 0;
   height: 100%;
   font-family: "Google Sans", "Helvetica Neue", Helvetica, Arial;
+  scroll-behavior: smooth;
 }
 
 a {
