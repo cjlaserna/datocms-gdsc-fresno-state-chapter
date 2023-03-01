@@ -1,7 +1,8 @@
 import Layout from "../src/components/Layout"
 import { request } from "../lib/datocms"
+import { renderMetaTags } from "react-datocms"
 import { useQuerySubscription } from "react-datocms"
-import { responsiveImageFragment } from "../lib/fragments"
+import { responsiveImageFragment, metaTagsFragment } from "../lib/fragments"
 import Link from "next/link"
 import Head from "next/head"
 import Script from "next/script"
@@ -36,9 +37,13 @@ export async function getStaticProps({
         pageLink {
           slug
         }
+        seo: _seoMetaTags {
+          ...metaTagsFragment
+        }
       }
     }
     ${responsiveImageFragment}
+    ${metaTagsFragment}
     `,
     landingHeroDetails,
   }
@@ -150,12 +155,14 @@ export default function LandingPage({ landingHero, highlightsInfo, eventsInfo, o
   const { data: organizerResp } = useQuerySubscription(organizerInfo)
 
   const heroDetails = hero.landing
+  const metaTags = heroDetails.seo
   const highlightDetails = highlightResp.allHighlights
   const eventDetails = eventsResp.allEvents
   const organizerDetails = organizerResp.allOrganizers
 
   return (
     <Layout pageTitle="GDSC - Fresno State Website">
+      <Head>{renderMetaTags(metaTags)}</Head>
       {/* Hero */}
       {/* @TODO: Add datocms integration */}
       <section className="relative min-h-300 heroImg">
