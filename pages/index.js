@@ -19,6 +19,7 @@ export async function getStaticProps({
   highlightsDetails = false,
   eventDetails = false,
   organizerDetails = false,
+  configDetails = false,
 }) {
   // for landingHeroDetails
   const landingHeroReq = {
@@ -69,7 +70,7 @@ export async function getStaticProps({
 
   const eventsReq = {
     query: `{
-      allEvents {
+      allEvents(orderBy: eventDateLiteral_ASC) {
         eventName
         eventDesc
         eventDate
@@ -77,11 +78,23 @@ export async function getStaticProps({
         archive {
           slug
         }
+        customBtnText
+        externalLink
         workshopLink
         zoomLinkIfAny
       }
     }`,
     eventDetails,
+  }
+
+  const userConfig = {
+    query: `{
+      config {
+        hideEventsBefore
+        hideEventsAfterXDays
+      }
+    }`,
+    configDetails,
   }
 
   const organizerReq = {
@@ -143,6 +156,17 @@ export async function getStaticProps({
         : {
             enabled: false,
             initialData: await request(organizerReq),
+          },
+      configInfo: configDetails
+        ? {
+            ...userConfig,
+            initialData: await request(userConfig),
+            token: process.env.DATOCMS_API_READONLY_TOKEN,
+            environment: process.env.NEXT_DATOCMS_ENVIRONMENT || null,
+          }
+        : {
+            enabled: false,
+            initialData: await request(userConfig),
           },
     },
   }

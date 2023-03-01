@@ -9,13 +9,16 @@ export default function Events({ allEvents }) {
         var eventBtn
         if (event.archive) {
           eventLink = `/pages/${event.archive.slug}`
-          eventBtn = "Learn More"
+          eventBtn = event.customBtnText ? event.customBtnText : "Learn More"
+        } else if (event.externalLink) {
+          eventLink = event.externalLink
+          eventBtn = event.customBtnText ? event.customBtnText : "Learn More"
         } else if (event.workshopLink) {
           eventLink = event.workshopLink
-          eventBtn = "Watch Recording"
+          eventBtn = event.customBtnText ? event.customBtnText : "Watch Recording"
         } else if (event.zoomLinkIfAny) {
           eventLink = event.zoomLinkIfAny
-          eventBtn = "Join On Zoom"
+          eventBtn = event.customBtnText ? event.customBtnText : "Join Online"
         } else {
           eventLink = null
         }
